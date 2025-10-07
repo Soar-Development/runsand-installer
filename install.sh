@@ -2,14 +2,14 @@
 
 set -euo pipefail
 
-# Rundsand Universal Installer
+# Runsand Universal Installer
 # Supports: Linux x86_64, ARM64, ARMv7
 
 # Configuration
-BINARY_NAME="rundsand"
-GITHUB_REPO="Soar-Development/rundsand-installer"
+BINARY_NAME="runsand"
+GITHUB_REPO="Soar-Development/runsand-installer"
 INSTALL_DIR="/usr/local/bin"
-CONFIG_DIR="$HOME/.config/rundsand"
+CONFIG_DIR="$HOME/.config/runsand"
 TEMP_DIR=$(mktemp -d)
 
 # Colors for output
@@ -97,7 +97,7 @@ check_requirements() {
     fi
     
     if ! command_exists docker; then
-        log_warning "Docker not found. Docker is required for Rundsand to function."
+        log_warning "Docker not found. Docker is required for Runsand to function."
         log_info "Install Docker: https://docs.docker.com/get-docker/"
         log_info "You can continue installation and install Docker later."
     else
@@ -155,7 +155,7 @@ install_binary() {
     local download_url="https://github.com/${GITHUB_REPO}/releases/download/${version}/${binary_name}"
     local temp_binary="$TEMP_DIR/$binary_name"
 
-    log_info "Installing Rundsand for ${os}-${arch}..."
+    log_info "Installing Runsand for ${os}-${arch}..."
     log_info "Version: $version"
     
     # Download binary
@@ -182,7 +182,7 @@ install_binary() {
     if command_exists "$BINARY_NAME"; then
         local installed_version
         installed_version=$("$BINARY_NAME" --version 2>/dev/null | grep -o 'v[0-9]\+\.[0-9]\+\.[0-9]\+' || echo "unknown")
-        log_success "Installed Rundsand $installed_version to $INSTALL_DIR/$BINARY_NAME"
+        log_success "Installed Runsand $installed_version to $INSTALL_DIR/$BINARY_NAME"
     else
         log_error "Installation verification failed"
         exit 1
@@ -203,11 +203,11 @@ create_directories() {
 show_next_steps() {
     log_success "Installation complete! 🚀"
     echo
-    echo "🎉 Rundsand is now installed!"
+    echo "🎉 Runsand is now installed!"
     echo
     echo "Next steps:"
-    echo "1. Run 'sudo rundsand --help' to see available commands"
-    echo "2. Run 'sudo rundsand' to start the interactive mode"
+    echo "1. Run 'sudo runsand --help' to see available commands"
+    echo "2. Run 'sudo runsand' to start the interactive mode"
     echo "3. Import your Solana wallet when prompted"
     echo
     echo "For help: https://github.com/$GITHUB_REPO"
@@ -216,8 +216,8 @@ show_next_steps() {
 
 # Main installation function
 main() {
-    echo "Rundsand Universal Installer"
-    echo "============================"
+    echo "Runsand Universal Installer"
+    echo "==========================="
     echo
     
     # Detect system

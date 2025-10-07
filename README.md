@@ -9,24 +9,24 @@ Rundsand provides seamless access to cloud-based desktop environments with full 
 ### Universal Installer (Recommended)
 
 ```bash
-curl -sSL https://raw.githubusercontent.com/Soar-Development/rundsand-installer/main/install.sh | sudo bash
+curl -sSL https://raw.githubusercontent.com/Soar-Development/runsand-installer/main/install.sh | sudo bash
 ```
 
 ### Debian Package
 
 ```bash
 # Download and install
-wget https://github.com/Soar-Development/rundsand-installer/releases/latest/download/rundsand_latest_amd64.deb
-sudo dpkg -i rundsand_latest_amd64.deb
+wget https://github.com/Soar-Development/runsand-installer/releases/latest/download/runsand_latest_amd64.deb
+sudo dpkg -i runsand_latest_amd64.deb
 ```
 
 ### Manual Installation
 
 ```bash
 # Download binary for your architecture
-wget https://github.com/Soar-Development/rundsand-installer/releases/latest/download/rundsand-linux-amd64
-chmod +x rundsand-linux-amd64
-sudo mv rundsand-linux-amd64 /usr/local/bin/rundsand
+wget https://github.com/Soar-Development/runsand-installer/releases/latest/download/runsand-linux-amd64
+chmod +x runsand-linux-amd64
+sudo mv runsand-linux-amd64 /usr/local/bin/runsand
 ```
 
 ## Supported Platforms
@@ -70,7 +70,7 @@ sudo usermod -aG docker $USER
 After installation, run:
 
 ```bash
-sudo rundsand
+sudo runsand
 ```
 
 The first-run setup wizard will guide you through:
@@ -83,7 +83,7 @@ The first-run setup wizard will guide you through:
 ## Viewing Status
 
 To check your connection status:
-1. Run `sudo rundsand` to open the interactive menu
+1. Run `sudo runsand` to open the interactive menu
 2. Navigate to **"View Status"** using W/S keys or arrow keys
 3. Press **Enter** to see detailed connection information
 
@@ -100,13 +100,13 @@ The desktop environment image is approximately **4.5GB**. During the first setup
 
 ```bash
 # Check for updates
-sudo rundsand update --check
+sudo runsand update --check
 
 # Update to latest version
-sudo rundsand update
+sudo runsand update
 
 # Or re-run the installer
-curl -sSL https://raw.githubusercontent.com/Soar-Development/rundsand-installer/main/install.sh | sudo bash
+curl -sSL https://raw.githubusercontent.com/Soar-Development/runsand-installer/main/install.sh | sudo bash
 ```
 
 ## Manual Removal
@@ -115,10 +115,10 @@ If you need to remove Rundsand:
 
 ```bash
 # Remove binary
-sudo rm -f /usr/local/bin/rundsand
+sudo rm -f /usr/local/bin/runsand
 
 # Remove configuration (optional)
-rm -rf ~/.config/rundsand
+rm -rf ~/.config/runsand
 ```
 
 ## Architecture Detection
@@ -127,14 +127,14 @@ The installer automatically detects your system architecture:
 
 ```bash
 # Detected architectures:
-# x86_64    → rundsand-linux-amd64
-# aarch64   → rundsand-linux-arm64  
-# armv7l    → rundsand-linux-armv7
+# x86_64    → runsand-linux-amd64
+# aarch64   → runsand-linux-arm64  
+# armv7l    → runsand-linux-armv7
 ```
 
 ## Configuration
 
-Default configuration location: `~/.config/rundsand/config.json`
+Default configuration location: `~/.config/runsand/config.json`
 
 ```json
 {
@@ -168,13 +168,13 @@ docker --version
 docker info
 
 # Note: Rundsand requires sudo to run
-sudo rundsand --version
+sudo runsand --version
 ```
 
 **Update issues:**
 ```bash
 # Force reinstall
-curl -sSL https://raw.githubusercontent.com/Soar-Development/rundsand-installer/main/install.sh | sudo bash
+curl -sSL https://raw.githubusercontent.com/Soar-Development/runsand-installer/main/install.sh | sudo bash
 ```
 
 **Slow download:**
@@ -183,8 +183,8 @@ The initial desktop image download may appear slow at first (~6% progress) but w
 ### Get Help
 
 - **Documentation**: [View installation guide](docs/installation.md)
-- **Issues**: [Report problems](https://github.com/Soar-Development/rundsand-installer/issues)
-- **Updates**: [View releases](https://github.com/Soar-Development/rundsand-installer/releases)
+- **Issues**: [Report problems](https://github.com/Soar-Development/runsand-installer/issues)
+- **Updates**: [View releases](https://github.com/Soar-Development/runsand-installer/releases)
 
 ## Security
 

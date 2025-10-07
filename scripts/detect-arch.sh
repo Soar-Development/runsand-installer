@@ -57,7 +57,7 @@ detect_os() {
 get_binary_name() {
     local arch="$1"
     local os="$2"
-    echo "rundsand-${os}-${arch}"
+    echo "runsand-${os}-${arch}"
 }
 
 # Get package architecture for Debian packages
@@ -171,7 +171,7 @@ Commands:
 
 Examples:
   $0 detect   # Output: linux-amd64
-  $0 binary   # Output: rundsand-linux-amd64
+  $0 binary   # Output: runsand-linux-amd64
   $0 package  # Output: amd64
   $0 info     # Show detailed system info
   $0 check    # Check support and exit with status

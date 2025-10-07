@@ -73,17 +73,17 @@ jobs:
         LDFLAGS="-X main.version=${VERSION} -s -w"
         
         # Build obfuscated binary
-        garble -literals -tiny -seed=random build -ldflags "${LDFLAGS}" -o "../../rundsand-linux-${{ matrix.arch }}" ./cmd/client
+        garble -literals -tiny -seed=random build -ldflags "${LDFLAGS}" -o "../../runsand-linux-${{ matrix.arch }}" ./cmd/client
         
         # Verify binary
-        file "../../rundsand-linux-${{ matrix.arch }}"
-        ls -la "../../rundsand-linux-${{ matrix.arch }}"
+        file "../../runsand-linux-${{ matrix.arch }}"
+        ls -la "../../runsand-linux-${{ matrix.arch }}"
     
     - name: Upload binary artifact
       uses: actions/upload-artifact@v4
       with:
-        name: rundsand-linux-${{ matrix.arch }}
-        path: rundsand-linux-${{ matrix.arch }}
+        name: runsand-linux-${{ matrix.arch }}
+        path: runsand-linux-${{ matrix.arch }}
         retention-days: 1
 
   package:
@@ -107,35 +107,35 @@ jobs:
     - name: Download binary artifact
       uses: actions/download-artifact@v4
       with:
-        name: rundsand-linux-${{ matrix.arch }}
+        name: runsand-linux-${{ matrix.arch }}
     
     - name: Create Debian package
       run: |
         VERSION="${{ github.event.inputs.version }}"
         CLEAN_VERSION="${VERSION#v}"  # Remove 'v' prefix
-        BINARY_NAME="rundsand-linux-${{ matrix.arch }}"
-        PACKAGE_NAME="rundsand_${CLEAN_VERSION}_${{ matrix.deb_arch }}.deb"
+        BINARY_NAME="runsand-linux-${{ matrix.arch }}"
+        PACKAGE_NAME="runsand_${CLEAN_VERSION}_${{ matrix.deb_arch }}.deb"
         
         # Create package directory structure
         mkdir -p "package/usr/local/bin"
         mkdir -p "package/DEBIAN"
         
         # Copy binary
-        cp "${BINARY_NAME}" "package/usr/local/bin/rundsand"
-        chmod 755 "package/usr/local/bin/rundsand"
+        cp "${BINARY_NAME}" "package/usr/local/bin/runsand"
+        chmod 755 "package/usr/local/bin/runsand"
         
         # Create control file
         cat > "package/DEBIAN/control" << EOF
-        Package: rundsand
+        Package: runsand
         Version: ${CLEAN_VERSION}
         Architecture: ${{ matrix.deb_arch }}
-        Maintainer: Rundsand Team <info@rundsand.dev>
+        Maintainer: Runsand Team <info@runsand.dev>
         Depends: docker.io | docker-ce
-        Description: Rundsand Desktop Client
+        Description: Runsand Desktop Client
          Desktop-as-a-Service client for accessing cloud-based development environments.
          Provides secure, Solana wallet-authenticated access to containerized desktop
          sessions with full SSH access and development tools.
-        Homepage: https://github.com/Soar-Development/rundsand-installer
+        Homepage: https://github.com/Soar-Development/runsand-installer
         EOF
         
         # Create postinst script
@@ -145,9 +145,9 @@ jobs:
         
         # Create user directories
         if [ "$1" = "configure" ]; then
-            # This runs as root, but we want user dirs to be created when user runs rundsand
-            echo "Rundsand installed successfully!"
-            echo "Run 'sudo rundsand' to get started (requires root privileges)."
+            # This runs as root, but we want user dirs to be created when user runs runsand
+            echo "Runsand installed successfully!"
+            echo "Run 'sudo runsand' to get started (requires root privileges)."
         fi
         
         exit 0
@@ -159,9 +159,9 @@ jobs:
         #!/bin/bash
         set -e
         
-        # Stop any running rundsand processes
+        # Stop any running runsand processes
         if [ "$1" = "remove" ]; then
-            pkill -f "/usr/local/bin/rundsand" || true
+            pkill -f "/usr/local/bin/runsand" || true
         fi
         
         exit 0
@@ -178,8 +178,8 @@ jobs:
     - name: Upload package artifact
       uses: actions/upload-artifact@v4
       with:
-        name: rundsand_${{ matrix.deb_arch }}.deb
-        path: rundsand_*.deb
+        name: runsand_${{ matrix.deb_arch }}.deb
+        path: runsand_*.deb
         retention-days: 1
 
   release:
@@ -201,17 +201,17 @@ jobs:
         
         # Show current directory structure for debugging
         echo "Current directory structure:"
-        find . -type f -name "*rundsand*" -o -name "*.deb" | head -20
+        find . -type f -name "*runsand*" -o -name "*.deb" | head -20
         
         # Move binaries (they should be in artifact subdirectories)
-        if [ -f "rundsand-linux-amd64/rundsand-linux-amd64" ]; then
-          mv rundsand-linux-amd64/rundsand-linux-amd64 release/
+        if [ -f "runsand-linux-amd64/runsand-linux-amd64" ]; then
+          mv runsand-linux-amd64/runsand-linux-amd64 release/
         fi
-        if [ -f "rundsand-linux-arm64/rundsand-linux-arm64" ]; then
-          mv rundsand-linux-arm64/rundsand-linux-arm64 release/
+        if [ -f "runsand-linux-arm64/runsand-linux-arm64" ]; then
+          mv runsand-linux-arm64/runsand-linux-arm64 release/
         fi
-        if [ -f "rundsand-linux-armv7/rundsand-linux-armv7" ]; then
-          mv rundsand-linux-armv7/rundsand-linux-armv7 release/
+        if [ -f "runsand-linux-armv7/runsand-linux-armv7" ]; then
+          mv runsand-linux-armv7/runsand-linux-armv7 release/
         fi
         
         # Move packages (find them and avoid duplicates)
@@ -237,39 +237,39 @@ jobs:
         VERSION="${{ github.event.inputs.version }}"
         
         cat > release_notes.md << EOF
-        # Rundsand Desktop Client ${VERSION}
+        # Runsand Desktop Client ${VERSION}
         
         ## Installation
         
         ### Universal Installer (Recommended)
         \`\`\`bash
-        curl -sSL https://raw.githubusercontent.com/Soar-Development/rundsand-installer/main/install.sh | bash
+        curl -sSL https://raw.githubusercontent.com/Soar-Development/runsand-installer/main/install.sh | bash
         \`\`\`
         
         ### Debian Package
         \`\`\`bash
         # AMD64
-        wget https://github.com/Soar-Development/rundsand-installer/releases/download/${VERSION}/rundsand_$(echo ${VERSION} | sed 's/v//')_amd64.deb
-        sudo dpkg -i rundsand_*.deb
+        wget https://github.com/Soar-Development/runsand-installer/releases/download/${VERSION}/runsand_$(echo ${VERSION} | sed 's/v//')_amd64.deb
+        sudo dpkg -i runsand_*.deb
         
         # ARM64
-        wget https://github.com/Soar-Development/rundsand-installer/releases/download/${VERSION}/rundsand_$(echo ${VERSION} | sed 's/v//')_arm64.deb
-        sudo dpkg -i rundsand_*.deb
+        wget https://github.com/Soar-Development/runsand-installer/releases/download/${VERSION}/runsand_$(echo ${VERSION} | sed 's/v//')_arm64.deb
+        sudo dpkg -i runsand_*.deb
         \`\`\`
         
         ### Manual Installation
         \`\`\`bash
         # Download for your architecture
-        wget https://github.com/Soar-Development/rundsand-installer/releases/download/${VERSION}/rundsand-linux-amd64
-        chmod +x rundsand-linux-amd64
-        sudo mv rundsand-linux-amd64 /usr/local/bin/rundsand
+        wget https://github.com/Soar-Development/runsand-installer/releases/download/${VERSION}/runsand-linux-amd64
+        chmod +x runsand-linux-amd64
+        sudo mv runsand-linux-amd64 /usr/local/bin/runsand
         \`\`\`
         
         ## Supported Architectures
         
-        - **Linux AMD64** (Intel/AMD 64-bit) - \`rundsand-linux-amd64\`
-        - **Linux ARM64** (64-bit ARM) - \`rundsand-linux-arm64\`
-        - **Linux ARMv7** (32-bit ARM) - \`rundsand-linux-armv7\`
+        - **Linux AMD64** (Intel/AMD 64-bit) - \`runsand-linux-amd64\`
+        - **Linux ARM64** (64-bit ARM) - \`runsand-linux-arm64\`
+        - **Linux ARMv7** (32-bit ARM) - \`runsand-linux-armv7\`
         
         ## What's New
         
@@ -281,7 +281,7 @@ jobs:
         
         \`\`\`bash
         # Download checksums
-        wget https://github.com/Soar-Development/rundsand-installer/releases/download/${VERSION}/checksums.txt
+        wget https://github.com/Soar-Development/runsand-installer/releases/download/${VERSION}/checksums.txt
         
         # Verify your download
         sha256sum -c checksums.txt
@@ -296,12 +296,12 @@ jobs:
       uses: softprops/action-gh-release@v1
       with:
         tag_name: ${{ github.event.inputs.version }}
-        name: Rundsand Desktop Client ${{ github.event.inputs.version }}
+        name: Runsand Desktop Client ${{ github.event.inputs.version }}
         body_path: release_notes.md
         files: |
-          release/rundsand-linux-amd64
-          release/rundsand-linux-arm64
-          release/rundsand-linux-armv7
+          release/runsand-linux-amd64
+          release/runsand-linux-arm64
+          release/runsand-linux-armv7
           release/*.deb
           release/checksums.txt
         draft: false
