@@ -1,6 +1,6 @@
-# Astir Installation Guide
+# Runsand Installation Guide
 
-This guide covers all installation methods for the Astir Desktop Client on Linux systems.
+This guide covers all installation methods for the Runsand Desktop Client on Linux systems.
 
 ## Table of Contents
 
@@ -17,7 +17,7 @@ This guide covers all installation methods for the Astir Desktop Client on Linux
   - [Step 1: System Requirements Check](#step-1-system-requirements-check)
   - [Step 2: Wallet Import](#step-2-wallet-import)
   - [Step 3: Connection Test](#step-3-connection-test)
-- [Running Astir in the Background with `screen` or `tmux`](#running-astir-in-the-background-with-screen-or-tmux)
+- [Running Runsand in the Background with `screen` or `tmux`](#running-runsand-in-the-background-with-screen-or-tmux)
   - [Option 1: Using `screen`](#option-1-using-screen)
   - [Option 2: Using `tmux`](#option-2-using-tmux)
 - [Configuration](#configuration)
@@ -39,12 +39,12 @@ This guide covers all installation methods for the Astir Desktop Client on Linux
 For most users, the universal installer is the fastest way to get started:
 
 ```bash
-curl -sSL https://raw.githubusercontent.com/Soar-Development/astir-installer/main/install.sh | sudo bash
+curl -sSL https://raw.githubusercontent.com/Soar-Development/runsand-installer/main/install.sh | sudo bash
 ```
 
 ## Prerequisites
 
-> **⚠️ IMPORTANT WARNING**: Astir Node is still in development phase!
+> **⚠️ IMPORTANT WARNING**: Runsand Node is still in development phase!
 
 **We strongly recommend creating a completely new Solana address** that meets these specific requirements:
 - Generated from a 24-word mnemonic phrase
@@ -88,13 +88,13 @@ You can create this address using one of the following methods:
 - **Architecture**: x86_64, ARM64, or ARMv7
 - **RAM**: 512MB available
 - **Disk Space**: 100MB for client + 4.5GB for desktop image
-- **Sudo Access**: Required for installation, system setup, and running Astir
+- **Sudo Access**: Required for installation, system setup, and running Runsand
 - **Network**: Internet connection for initial setup and updates
 
 ### Required Software
 - **Docker**: 20.10 or later (install from [docs.docker.com](https://docs.docker.com/engine/install/))
 - **Solana Wallet**: New wallet created following the prerequisites above
-- **Sudo Access**: Required for installation and running Astir
+- **Sudo Access**: Required for installation and running Runsand
 
 ### Installing Docker
 #### Install Dependencies
@@ -120,9 +120,9 @@ sudo usermod -aG docker $USER
 
 | Platform | Architecture | Binary Name | Package |
 |----------|-------------|-------------|---------|
-| Linux x86_64 | AMD64 | `astir-linux-amd64` | `astir_*_amd64.deb` |
-| Linux ARM64 | ARM64 | `astir-linux-arm64` | `astir_*_arm64.deb` |
-| Linux ARMv7 | ARM32v7 | `astir-linux-armv7` | `astir_*_armhf.deb` |
+| Linux x86_64 | AMD64 | `runsand-linux-amd64` | `runsand_*_amd64.deb` |
+| Linux ARM64 | ARM64 | `runsand-linux-arm64` | `runsand_*_arm64.deb` |
+| Linux ARMv7 | ARM32v7 | `runsand-linux-armv7` | `runsand_*_armhf.deb` |
 
 ## Installation Methods
 
@@ -139,20 +139,20 @@ The universal installer automatically detects your system and installs the appro
 
 #### Installation
 ```bash
-curl -sSL https://raw.githubusercontent.com/Soar-Development/astir-installer/main/install.sh | sudo bash
+curl -sSL https://raw.githubusercontent.com/Soar-Development/runsand-installer/main/install.sh | sudo bash
 ```
 
 #### What it does
 1. Detects your system architecture
 2. Checks system requirements (Docker, etc.)
 3. Downloads the latest binary for your system
-4. Installs to `/usr/local/bin/astir`
+4. Installs to `/usr/local/bin/runsand`
 5. Creates user configuration directories
 6. Verifies the installation
 
 #### Example Output
 ```
-Astir Universal Installer
+Runsand Universal Installer
 =========================
 
 [INFO] Detected system: linux-amd64
@@ -160,19 +160,19 @@ Astir Universal Installer
 [SUCCESS] Docker is available and running
 [INFO] Fetching latest version...
 [INFO] Latest version: v1.0.0
-[INFO] Installing Astir for linux-amd64...
+[INFO] Installing Runsand for linux-amd64...
 [INFO] Version: v1.0.0
-[INFO] Downloading: astir-linux-amd64
-[SUCCESS] Installed Astir v1.0.0 to /usr/local/bin/astir
+[INFO] Downloading: runsand-linux-amd64
+[SUCCESS] Installed Runsand v1.0.0 to /usr/local/bin/runsand
 [INFO] Creating user directories...
-[SUCCESS] Created user directories in /home/user/.config/astir
+[SUCCESS] Created user directories in /home/user/.config/runsand
 [SUCCESS] Installation complete! 🚀
 
-🎉 Astir is now installed!
+🎉 Runsand is now installed!
 
 Next steps:
-1. Run 'sudo astir --help' to see available commands
-2. Run 'sudo astir' to start the interactive mode
+1. Run 'sudo runsand --help' to see available commands
+2. Run 'sudo runsand' to start the interactive mode
 3. Import your newly created Solana wallet when prompted
 ```
 
@@ -183,21 +183,21 @@ For Debian-based distributions, you can install using .deb packages.
 #### Download and Install
 ```bash
 # Get latest version info
-LATEST_VERSION=$(curl -s https://api.github.com/repos/Soar-Development/astir-installer/releases/latest | grep -o '"tag_name": "[^"]*' | cut -d'"' -f4)
+LATEST_VERSION=$(curl -s https://api.github.com/repos/Soar-Development/runsand-installer/releases/latest | grep -o '"tag_name": "[^"]*' | cut -d'"' -f4)
 # Remove 'v' prefix for package naming
 VERSION=${LATEST_VERSION#v}
 
 # AMD64 (Intel/AMD 64-bit)
-wget "https://github.com/Soar-Development/astir-installer/releases/download/${LATEST_VERSION}/astir_${VERSION}_amd64.deb"
-sudo dpkg -i "astir_${VERSION}_amd64.deb"
+wget "https://github.com/Soar-Development/runsand-installer/releases/download/${LATEST_VERSION}/runsand_${VERSION}_amd64.deb"
+sudo dpkg -i "runsand_${VERSION}_amd64.deb"
 
 # ARM64 (64-bit ARM)
-wget "https://github.com/Soar-Development/astir-installer/releases/download/${LATEST_VERSION}/astir_${VERSION}_arm64.deb"
-sudo dpkg -i "astir_${VERSION}_arm64.deb"
+wget "https://github.com/Soar-Development/runsand-installer/releases/download/${LATEST_VERSION}/runsand_${VERSION}_arm64.deb"
+sudo dpkg -i "runsand_${VERSION}_arm64.deb"
 
 # ARMv7 (32-bit ARM)
-wget "https://github.com/Soar-Development/astir-installer/releases/download/${LATEST_VERSION}/astir_${VERSION}_armhf.deb"
-sudo dpkg -i "astir_${VERSION}_armhf.deb"
+wget "https://github.com/Soar-Development/runsand-installer/releases/download/${LATEST_VERSION}/runsand_${VERSION}_armhf.deb"
+sudo dpkg -i "runsand_${VERSION}_armhf.deb"
 ```
 
 #### Install Dependencies
@@ -216,52 +216,52 @@ For advanced users or custom setups.
 #### Download Binary
 ```bash
 # Get latest version info
-LATEST_VERSION=$(curl -s https://api.github.com/repos/Soar-Development/astir-installer/releases/latest | grep -o '"tag_name": "[^"]*' | cut -d'"' -f4)
+LATEST_VERSION=$(curl -s https://api.github.com/repos/Soar-Development/runsand-installer/releases/latest | grep -o '"tag_name": "[^"]*' | cut -d'"' -f4)
 
 # Download for your architecture
 # AMD64
-wget "https://github.com/Soar-Development/astir-installer/releases/download/${LATEST_VERSION}/astir-linux-amd64"
+wget "https://github.com/Soar-Development/runsand-installer/releases/download/${LATEST_VERSION}/runsand-linux-amd64"
 
 # ARM64
-wget "https://github.com/Soar-Development/astir-installer/releases/download/${LATEST_VERSION}/astir-linux-arm64"
+wget "https://github.com/Soar-Development/runsand-installer/releases/download/${LATEST_VERSION}/runsand-linux-arm64"
 
 # ARMv7
-wget "https://github.com/Soar-Development/astir-installer/releases/download/${LATEST_VERSION}/astir-linux-armv7"
+wget "https://github.com/Soar-Development/runsand-installer/releases/download/${LATEST_VERSION}/runsand-linux-armv7"
 
 # ARMv6
-wget "https://github.com/Soar-Development/astir-installer/releases/download/${LATEST_VERSION}/astir-linux-armv6"
+wget "https://github.com/Soar-Development/runsand-installer/releases/download/${LATEST_VERSION}/runsand-linux-armv6"
 ```
 
 #### Install Binary
 ```bash
 # Make executable
-chmod +x astir-linux-*
+chmod +x runsand-linux-*
 
 # Install to system (choose your architecture)
-sudo mv astir-linux-amd64 /usr/local/bin/astir
+sudo mv runsand-linux-amd64 /usr/local/bin/runsand
 
-# Or install to user directory (Note: Astir requires sudo to run)
+# Or install to user directory (Note: Runsand requires sudo to run)
 mkdir -p ~/bin
-mv astir-linux-amd64 ~/bin/astir
+mv runsand-linux-amd64 ~/bin/runsand
 export PATH="$HOME/bin:$PATH"
 ```
 
 #### Create User Directories
 ```bash
-mkdir -p ~/.config/astir/wallets
+mkdir -p ~/.config/runsand/wallets
 ```
 
 #### Verify Installation
 ```bash
-sudo astir --version
+sudo runsand --version
 ```
 
 ## First Run Setup
 
-After installation, run Astir for the first time:
+After installation, run Runsand for the first time:
 
 ```bash
-sudo astir
+sudo runsand
 ```
 
 The setup wizard will guide you through:
@@ -277,7 +277,7 @@ The setup wizard will guide you through:
 - Import your newly created Solana wallet (see Prerequisites section)
 - 24-word mnemonic phrase required (from the wallet you created in Prerequisites)
 - Wallet stored encrypted locally
-- **⚠️ Use only the new wallet created specifically for Astir**
+- **⚠️ Use only the new wallet created specifically for Runsand**
 
 ### Step 3: Connection Test
 - Test connection to orchestrator
@@ -285,9 +285,9 @@ The setup wizard will guide you through:
 - Confirm service availability
 
 
-## Running Astir in the Background with `screen` or `tmux`
+## Running Runsand in the Background with `screen` or `tmux`
 
-Astir needs to remain running for continuous operation. If you don’t want to keep a terminal window open, you can run it inside a persistent session using `screen` or `tmux`.
+Runsand needs to remain running for continuous operation. If you don’t want to keep a terminal window open, you can run it inside a persistent session using `screen` or `tmux`.
 
 ### Option 1: Using `screen`
 1. **Install screen** (if not already installed):
@@ -297,17 +297,17 @@ Astir needs to remain running for continuous operation. If you don’t want to k
    ```
 2. **Create a named session**:
    ```bash
-   screen -S astir
+   screen -S runsand
    ```
-3. **Run Astir inside the session**:
+3. **Run Runsand inside the session**:
    ```bash
-   sudo astir
+   sudo runsand
    ```
-4. **Detach from the session** (leave Astir running in background):
+4. **Detach from the session** (leave Runsand running in background):
    - Press `Ctrl + A`, then `Ctrl + D`
 5. **Reattach later**:
    ```bash
-   screen -r astir
+   screen -r runsand
    ```
 6. **List running sessions**:
    ```bash
@@ -324,24 +324,24 @@ Astir needs to remain running for continuous operation. If you don’t want to k
    ```
 2. **Create a named session**:
    ```bash
-   tmux new -s astir
+   tmux new -s runsand
    ```
-3. **Run Astir inside the session**:
+3. **Run Runsand inside the session**:
    ```bash
-   sudo astir
+   sudo runsand
    ```
 4. **Detach from the session**:
    - Press `Ctrl + B`, then `D`
 5. **Reattach later**:
    ```bash
-   tmux attach -t astir
+   tmux attach -t runsand
    ```
 6. **List running sessions**:
    ```bash
    tmux ls
    ```
 
-> **Tip:** This is useful for running Astir on remote servers or cloud instances where you want it to continue running after disconnecting from SSH.
+> **Tip:** This is useful for running Runsand on remote servers or cloud instances where you want it to continue running after disconnecting from SSH.
 
 
 ## Configuration
@@ -349,7 +349,7 @@ Astir needs to remain running for continuous operation. If you don’t want to k
 After setup, your configuration will be stored at:
 
 ```
-~/.config/astir/
+~/.config/runsand/
 ├── config.json          # Main configuration
 └── wallets/              # Encrypted wallet data
 ```
@@ -369,7 +369,7 @@ After setup, your configuration will be stored at:
 
 To monitor your connection status and system information:
 
-1. **Start the CLI**: Run `sudo astir` to open the interactive menu
+1. **Start the CLI**: Run `sudo runsand` to open the interactive menu
 2. **Navigate**: Use **W/S keys** or **arrow keys** to move between menu options
 3. **Select View Status**: Highlight "View Status" option 
 4. **Press Enter**: View the detailed status screen
@@ -434,17 +434,17 @@ docker --version
 ```bash
 # Try different download method
 # If curl fails, try wget
-wget https://raw.githubusercontent.com/Soar-Development/astir-installer/main/install.sh
+wget https://raw.githubusercontent.com/Soar-Development/runsand-installer/main/install.sh
 bash install.sh
 
 # Or download binary directly
-wget https://github.com/Soar-Development/astir-installer/releases/latest/download/astir-linux-amd64
+wget https://github.com/Soar-Development/runsand-installer/releases/latest/download/runsand-linux-amd64
 ```
 
 #### Checksum verification
 ```bash
 # Download checksums
-wget https://github.com/Soar-Development/astir-installer/releases/latest/download/checksums.txt
+wget https://github.com/Soar-Development/runsand-installer/releases/latest/download/checksums.txt
 
 # Verify your download
 sha256sum -c checksums.txt
@@ -459,27 +459,27 @@ If the installer doesn't detect your architecture correctly:
 uname -m
 
 # Download specific binary manually
-# x86_64 → astir-linux-amd64
-# aarch64 → astir-linux-arm64
-# armv7l → astir-linux-armv7
-# armv6l → astir-linux-armv6
+# x86_64 → runsand-linux-amd64
+# aarch64 → runsand-linux-arm64
+# armv7l → runsand-linux-armv7
+# armv6l → runsand-linux-armv6
 ```
 
 ## Updating
 
 ### Automatic Updates
-Astir checks for updates automatically on startup. If updates are available, you'll see a notification.
+Runsand checks for updates automatically on startup. If updates are available, you'll see a notification.
 
 ### Manual Update
 ```bash
 # Check for updates
-sudo astir update --check
+sudo runsand update --check
 
 # Update to latest version
-sudo astir update
+sudo runsand update
 
 # Or re-run installer (always safe)
-curl -sSL https://raw.githubusercontent.com/Soar-Development/astir-installer/main/install.sh | sudo bash
+curl -sSL https://raw.githubusercontent.com/Soar-Development/runsand-installer/main/install.sh | sudo bash
 ```
 
 ## Uninstallation
@@ -487,20 +487,20 @@ curl -sSL https://raw.githubusercontent.com/Soar-Development/astir-installer/mai
 ### Manual Removal
 ```bash
 # Remove binary
-sudo rm -f /usr/local/bin/astir
+sudo rm -f /usr/local/bin/runsand
 
 # Remove user data (optional)
-rm -rf ~/.config/astir
+rm -rf ~/.config/runsand
 
 # Remove package (if installed via .deb)
-sudo dpkg -r astir
+sudo dpkg -r runsand
 ```
 
 ## Support
 
-- **Documentation**: [GitHub Repository](https://github.com/Soar-Development/astir-installer)
-- **Issues**: [Report Problems](https://github.com/Soar-Development/astir-installer/issues)
-- **Releases**: [View Releases](https://github.com/Soar-Development/astir-installer/releases)
+- **Documentation**: [GitHub Repository](https://github.com/Soar-Development/runsand-installer)
+- **Issues**: [Report Problems](https://github.com/Soar-Development/runsand-installer/issues)
+- **Releases**: [View Releases](https://github.com/Soar-Development/runsand-installer/releases)
 
 ## Security
 

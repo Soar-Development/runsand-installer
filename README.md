@@ -1,32 +1,32 @@
-# Astir Desktop Client
+# Runsand Desktop Client
 
 **Desktop-as-a-Service Client for Linux**
 
-Astir provides seamless access to cloud-based desktop environments with full SSH access, editing tools, and development capabilities.
+Runsand provides seamless access to cloud-based desktop environments with full SSH access, editing tools, and development capabilities.
 
 ## Quick Installation
 
 ### Universal Installer (Recommended)
 
 ```bash
-curl -sSL https://raw.githubusercontent.com/Soar-Development/astir-installer/main/install.sh | sudo bash
+curl -sSL https://raw.githubusercontent.com/Soar-Development/runsand-installer/main/install.sh | sudo bash
 ```
 
 ### Debian Package
 
 ```bash
 # Download and install
-wget https://github.com/Soar-Development/astir-installer/releases/latest/download/astir_latest_amd64.deb
-sudo dpkg -i astir_latest_amd64.deb
+wget https://github.com/Soar-Development/runsand-installer/releases/latest/download/runsand_latest_amd64.deb
+sudo dpkg -i runsand_latest_amd64.deb
 ```
 
 ### Manual Installation
 
 ```bash
 # Download binary for your architecture
-wget https://github.com/Soar-Development/astir-installer/releases/latest/download/astir-linux-amd64
-chmod +x astir-linux-amd64
-sudo mv astir-linux-amd64 /usr/local/bin/astir
+wget https://github.com/Soar-Development/runsand-installer/releases/latest/download/runsand-linux-amd64
+chmod +x runsand-linux-amd64
+sudo mv runsand-linux-amd64 /usr/local/bin/runsand
 ```
 
 ## Supported Platforms
@@ -70,7 +70,7 @@ sudo usermod -aG docker $USER
 After installation, run:
 
 ```bash
-sudo astir
+sudo runsand
 ```
 
 The first-run setup wizard will guide you through:
@@ -83,7 +83,7 @@ The first-run setup wizard will guide you through:
 ## Viewing Status
 
 To check your connection status:
-1. Run `sudo astir` to open the interactive menu
+1. Run `sudo runsand` to open the interactive menu
 2. Navigate to **"View Status"** using W/S keys or arrow keys
 3. Press **Enter** to see detailed connection information
 
@@ -100,25 +100,25 @@ The desktop environment image is approximately **4.5GB**. During the first setup
 
 ```bash
 # Check for updates
-sudo astir update --check
+sudo runsand update --check
 
 # Update to latest version
-sudo astir update
+sudo runsand update
 
 # Or re-run the installer
-curl -sSL https://raw.githubusercontent.com/Soar-Development/astir-installer/main/install.sh | sudo bash
+curl -sSL https://raw.githubusercontent.com/Soar-Development/runsand-installer/main/install.sh | sudo bash
 ```
 
 ## Manual Removal
 
-If you need to remove Astir:
+If you need to remove Runsand:
 
 ```bash
 # Remove binary
-sudo rm -f /usr/local/bin/astir
+sudo rm -f /usr/local/bin/runsand
 
 # Remove configuration (optional)
-rm -rf ~/.config/astir
+rm -rf ~/.config/runsand
 ```
 
 ## Architecture Detection
@@ -127,14 +127,14 @@ The installer automatically detects your system architecture:
 
 ```bash
 # Detected architectures:
-# x86_64    → astir-linux-amd64
-# aarch64   → astir-linux-arm64  
-# armv7l    → astir-linux-armv7
+# x86_64    → runsand-linux-amd64
+# aarch64   → runsand-linux-arm64  
+# armv7l    → runsand-linux-armv7
 ```
 
 ## Configuration
 
-Default configuration location: `~/.config/astir/config.json`
+Default configuration location: `~/.config/runsand/config.json`
 
 ```json
 {
@@ -167,14 +167,14 @@ sudo usermod -aG docker $USER
 docker --version
 docker info
 
-# Note: Astir requires sudo to run
-sudo astir --version
+# Note: Runsand requires sudo to run
+sudo runsand --version
 ```
 
 **Update issues:**
 ```bash
 # Force reinstall
-curl -sSL https://raw.githubusercontent.com/Soar-Development/astir-installer/main/install.sh | sudo bash
+curl -sSL https://raw.githubusercontent.com/Soar-Development/runsand-installer/main/install.sh | sudo bash
 ```
 
 **Slow download:**
@@ -183,8 +183,8 @@ The initial desktop image download may appear slow at first (~6% progress) but w
 ### Get Help
 
 - **Documentation**: [View installation guide](docs/installation.md)
-- **Issues**: [Report problems](https://github.com/Soar-Development/astir-installer/issues)
-- **Updates**: [View releases](https://github.com/Soar-Development/astir-installer/releases)
+- **Issues**: [Report problems](https://github.com/Soar-Development/runsand-installer/issues)
+- **Updates**: [View releases](https://github.com/Soar-Development/runsand-installer/releases)
 
 ## Security
 
@@ -196,8 +196,8 @@ The initial desktop image download may appear slow at first (~6% progress) but w
 
 ## License
 
-The installer and documentation are open source. The Astir client binary is proprietary software.
+The installer and documentation are open source. The Runsand client binary is proprietary software.
 
 ---
 
-**Made with ❤️ by the Astir Team**
+**Made with ❤️ by the Runsand Team**
