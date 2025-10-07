@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Architecture Detection Script for Rundsand
+# Architecture Detection Script for Runsand
 # Used by installer to determine correct binary to download
 
 set -euo pipefail
@@ -157,7 +157,7 @@ main() {
             ;;
         "help"|"-h"|"--help")
             cat << EOF
-Architecture Detection Script for Rundsand
+Architecture Detection Script for Runsand
 
 Usage: $0 [command]
 

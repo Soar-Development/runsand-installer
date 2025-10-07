@@ -1,8 +1,8 @@
-# Rundsand Desktop Client
+# Runsand Desktop Client
 
 **Desktop-as-a-Service Client for Linux**
 
-Rundsand provides seamless access to cloud-based desktop environments with full SSH access, editing tools, and development capabilities.
+Runsand provides seamless access to cloud-based desktop environments with full SSH access, editing tools, and development capabilities.
 
 ## Quick Installation
 
@@ -111,7 +111,7 @@ curl -sSL https://raw.githubusercontent.com/Soar-Development/runsand-installer/m
 
 ## Manual Removal
 
-If you need to remove Rundsand:
+If you need to remove Runsand:
 
 ```bash
 # Remove binary
@@ -167,7 +167,7 @@ sudo usermod -aG docker $USER
 docker --version
 docker info
 
-# Note: Rundsand requires sudo to run
+# Note: Runsand requires sudo to run
 sudo runsand --version
 ```
 
@@ -196,8 +196,8 @@ The initial desktop image download may appear slow at first (~6% progress) but w
 
 ## License
 
-The installer and documentation are open source. The Rundsand client binary is proprietary software.
+The installer and documentation are open source. The Runsand client binary is proprietary software.
 
 ---
 
-**Made with ❤️ by the Rundsand Team**
+**Made with ❤️ by the Runsand Team**

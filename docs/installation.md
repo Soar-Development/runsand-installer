@@ -1,6 +1,6 @@
-# Rundsand Installation Guide
+# Runsand Installation Guide
 
-This guide covers all installation methods for the Rundsand Desktop Client on Linux systems.
+This guide covers all installation methods for the Runsand Desktop Client on Linux systems.
 
 ## Table of Contents
 
@@ -17,7 +17,7 @@ This guide covers all installation methods for the Rundsand Desktop Client on Li
   - [Step 1: System Requirements Check](#step-1-system-requirements-check)
   - [Step 2: Wallet Import](#step-2-wallet-import)
   - [Step 3: Connection Test](#step-3-connection-test)
-- [Running Rundsand in the Background with `screen` or `tmux`](#running-runsand-in-the-background-with-screen-or-tmux)
+- [Running Runsand in the Background with `screen` or `tmux`](#running-runsand-in-the-background-with-screen-or-tmux)
   - [Option 1: Using `screen`](#option-1-using-screen)
   - [Option 2: Using `tmux`](#option-2-using-tmux)
 - [Configuration](#configuration)
@@ -44,7 +44,7 @@ curl -sSL https://raw.githubusercontent.com/Soar-Development/runsand-installer/m
 
 ## Prerequisites
 
-> **⚠️ IMPORTANT WARNING**: Rundsand Node is still in development phase!
+> **⚠️ IMPORTANT WARNING**: Runsand Node is still in development phase!
 
 **We strongly recommend creating a completely new Solana address** that meets these specific requirements:
 - Generated from a 24-word mnemonic phrase
@@ -88,13 +88,13 @@ You can create this address using one of the following methods:
 - **Architecture**: x86_64, ARM64, or ARMv7
 - **RAM**: 512MB available
 - **Disk Space**: 100MB for client + 4.5GB for desktop image
-- **Sudo Access**: Required for installation, system setup, and running Rundsand
+- **Sudo Access**: Required for installation, system setup, and running Runsand
 - **Network**: Internet connection for initial setup and updates
 
 ### Required Software
 - **Docker**: 20.10 or later (install from [docs.docker.com](https://docs.docker.com/engine/install/))
 - **Solana Wallet**: New wallet created following the prerequisites above
-- **Sudo Access**: Required for installation and running Rundsand
+- **Sudo Access**: Required for installation and running Runsand
 
 ### Installing Docker
 #### Install Dependencies
@@ -152,7 +152,7 @@ curl -sSL https://raw.githubusercontent.com/Soar-Development/runsand-installer/m
 
 #### Example Output
 ```
-Rundsand Universal Installer
+Runsand Universal Installer
 =========================
 
 [INFO] Detected system: linux-amd64
@@ -160,15 +160,15 @@ Rundsand Universal Installer
 [SUCCESS] Docker is available and running
 [INFO] Fetching latest version...
 [INFO] Latest version: v1.0.0
-[INFO] Installing Rundsand for linux-amd64...
+[INFO] Installing Runsand for linux-amd64...
 [INFO] Version: v1.0.0
 [INFO] Downloading: runsand-linux-amd64
-[SUCCESS] Installed Rundsand v1.0.0 to /usr/local/bin/runsand
+[SUCCESS] Installed Runsand v1.0.0 to /usr/local/bin/runsand
 [INFO] Creating user directories...
 [SUCCESS] Created user directories in /home/user/.config/runsand
 [SUCCESS] Installation complete! 🚀
 
-🎉 Rundsand is now installed!
+🎉 Runsand is now installed!
 
 Next steps:
 1. Run 'sudo runsand --help' to see available commands
@@ -240,7 +240,7 @@ chmod +x runsand-linux-*
 # Install to system (choose your architecture)
 sudo mv runsand-linux-amd64 /usr/local/bin/runsand
 
-# Or install to user directory (Note: Rundsand requires sudo to run)
+# Or install to user directory (Note: Runsand requires sudo to run)
 mkdir -p ~/bin
 mv runsand-linux-amd64 ~/bin/runsand
 export PATH="$HOME/bin:$PATH"
@@ -258,7 +258,7 @@ sudo runsand --version
 
 ## First Run Setup
 
-After installation, run Rundsand for the first time:
+After installation, run Runsand for the first time:
 
 ```bash
 sudo runsand
@@ -277,7 +277,7 @@ The setup wizard will guide you through:
 - Import your newly created Solana wallet (see Prerequisites section)
 - 24-word mnemonic phrase required (from the wallet you created in Prerequisites)
 - Wallet stored encrypted locally
-- **⚠️ Use only the new wallet created specifically for Rundsand**
+- **⚠️ Use only the new wallet created specifically for Runsand**
 
 ### Step 3: Connection Test
 - Test connection to orchestrator
@@ -285,9 +285,9 @@ The setup wizard will guide you through:
 - Confirm service availability
 
 
-## Running Rundsand in the Background with `screen` or `tmux`
+## Running Runsand in the Background with `screen` or `tmux`
 
-Rundsand needs to remain running for continuous operation. If you don’t want to keep a terminal window open, you can run it inside a persistent session using `screen` or `tmux`.
+Runsand needs to remain running for continuous operation. If you don’t want to keep a terminal window open, you can run it inside a persistent session using `screen` or `tmux`.
 
 ### Option 1: Using `screen`
 1. **Install screen** (if not already installed):
@@ -299,11 +299,11 @@ Rundsand needs to remain running for continuous operation. If you don’t want t
    ```bash
    screen -S runsand
    ```
-3. **Run Rundsand inside the session**:
+3. **Run Runsand inside the session**:
    ```bash
    sudo runsand
    ```
-4. **Detach from the session** (leave Rundsand running in background):
+4. **Detach from the session** (leave Runsand running in background):
    - Press `Ctrl + A`, then `Ctrl + D`
 5. **Reattach later**:
    ```bash
@@ -326,7 +326,7 @@ Rundsand needs to remain running for continuous operation. If you don’t want t
    ```bash
    tmux new -s runsand
    ```
-3. **Run Rundsand inside the session**:
+3. **Run Runsand inside the session**:
    ```bash
    sudo runsand
    ```
@@ -341,7 +341,7 @@ Rundsand needs to remain running for continuous operation. If you don’t want t
    tmux ls
    ```
 
-> **Tip:** This is useful for running Rundsand on remote servers or cloud instances where you want it to continue running after disconnecting from SSH.
+> **Tip:** This is useful for running Runsand on remote servers or cloud instances where you want it to continue running after disconnecting from SSH.
 
 
 ## Configuration
@@ -468,7 +468,7 @@ uname -m
 ## Updating
 
 ### Automatic Updates
-Rundsand checks for updates automatically on startup. If updates are available, you'll see a notification.
+Runsand checks for updates automatically on startup. If updates are available, you'll see a notification.
 
 ### Manual Update
 ```bash

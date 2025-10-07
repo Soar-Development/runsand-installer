@@ -39,7 +39,7 @@ jobs:
             goarm: "7"
     
     steps:
-    - name: Checkout rundsand-install repository
+    - name: Checkout runsand-install repository
       uses: actions/checkout@v4
     
     - name: Checkout source repository
