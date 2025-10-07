@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Architecture Detection Script for Astir
+# Architecture Detection Script for Rundsand
 # Used by installer to determine correct binary to download
 
 set -euo pipefail
@@ -57,7 +57,7 @@ detect_os() {
 get_binary_name() {
     local arch="$1"
     local os="$2"
-    echo "astir-${os}-${arch}"
+    echo "rundsand-${os}-${arch}"
 }
 
 # Get package architecture for Debian packages
@@ -157,7 +157,7 @@ main() {
             ;;
         "help"|"-h"|"--help")
             cat << EOF
-Architecture Detection Script for Astir
+Architecture Detection Script for Rundsand
 
 Usage: $0 [command]
 
@@ -171,7 +171,7 @@ Commands:
 
 Examples:
   $0 detect   # Output: linux-amd64
-  $0 binary   # Output: astir-linux-amd64
+  $0 binary   # Output: rundsand-linux-amd64
   $0 package  # Output: amd64
   $0 info     # Show detailed system info
   $0 check    # Check support and exit with status
