@@ -41,7 +41,7 @@ sudo mv runsand-linux-amd64 /usr/local/bin/runsand
 - **Docker** 20.10 or later
 - **Sudo access** (required for installation)
 - **Internet connection** (for downloading ~4.5GB desktop image)
-- **Solana Wallet** (new wallet required for authentication - see installation guide for wallet creation)
+- **Ethereum or Solana Wallet** (new wallet required for authentication - supports 12/15/18/21/24-word mnemonic phrases)
 
 ## Prerequisites
 
@@ -59,7 +59,7 @@ sudo usermod -aG docker $USER
 ## Features
 
 - 🚀 **One-command setup** - Get started in under 5 minutes
-- 🔐 **Solana wallet authentication** - Secure blockchain-based access
+- 🔐 **Ethereum & Solana wallet authentication** - Secure blockchain-based access with flexible mnemonic support (12/15/18/21/24 words)
 - 🐳 **Docker-based environments** - Consistent, isolated desktop sessions
 - 🔄 **Automatic updates** - Stay current with latest features
 - 📦 **Multiple install methods** - Universal installer, packages, or manual
@@ -77,7 +77,7 @@ The first-run setup wizard will guide you through:
 
 1. **System Requirements Check** - Verify Docker and dependencies
 2. **Desktop Image Download** - Downloads the 4.5GB desktop environment (~5-10 minutes)
-3. **Wallet Import** - Connect your newly created Solana wallet (see installation guide for wallet creation)  
+3. **Wallet Import** - Import your Ethereum or Solana wallet using a 12/15/18/21/24-word mnemonic phrase
 4. **Connection Test** - Verify orchestrator connectivity
 
 ## Viewing Status
