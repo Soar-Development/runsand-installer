@@ -208,7 +208,7 @@ show_next_steps() {
     echo "Next steps:"
     echo "1. Run 'sudo runsand --help' to see available commands"
     echo "2. Run 'sudo runsand' to start the interactive mode"
-    echo "3. Import your Solana wallet when prompted"
+    echo "3. Import your Ethereum or Solana wallet when prompted (12/15/18/21/24-word mnemonic supported)"
     echo
     echo "For help: https://github.com/$GITHUB_REPO"
     echo

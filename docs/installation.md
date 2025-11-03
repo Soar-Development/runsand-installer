@@ -6,8 +6,7 @@ This guide covers all installation methods for the Runsand Desktop Client on Lin
 
 - [Quick Start](#quick-start)
 - [Prerequisites](#prerequisites)
-  - [Option 1: Soarchain Mobile App Method](#option-1-soarchain-mobile-app-method)
-  - [Option 2: Solana CLI Method](#option-2-solana-cli-method)
+  - [Wallet Creation Methods](#wallet-creation-methods)
 - [System Requirements](#system-requirements)
 - [Installation Methods](#installation-methods)
   - [1. Universal Installer (Recommended)](#1-universal-installer-recommended)
@@ -44,40 +43,43 @@ curl -sSL https://raw.githubusercontent.com/Soar-Development/runsand-installer/m
 
 ## Prerequisites
 
-> **⚠️ IMPORTANT WARNING**: Runsand Node is still in development phase!
+> **⚠️ IMPORTANT**: Runsand Node is still in development phase!
 
-**We strongly recommend creating a completely new Solana address** that meets these specific requirements:
-- Generated from a 24-word mnemonic phrase
-- Uses the derivation path: m/44'/501'/0'/0'
+**You will need either an Ethereum or Solana wallet** to authenticate with Runsand. The client supports flexible mnemonic phrase lengths:
+- ✅ 12 words (most common)
+- ✅ 15 words
+- ✅ 18 words
+- ✅ 21 words
+- ✅ 24 words (maximum entropy)
 
-You can create this address using one of the following methods:
+### Wallet Creation Methods
 
----
+#### Option 1: Ethereum Wallet (Recommended)
 
-### Option 1: Soarchain Mobile App Method
+**Using MetaMask or any standard Ethereum wallet:**
+1. Create a new wallet in MetaMask, Trust Wallet, or any BIP39-compatible Ethereum wallet
+2. Most wallets generate a 12-word mnemonic phrase by default
+3. **🚨 CRITICAL**: Write down your mnemonic phrase securely
+4. The wallet will use the standard BIP44 derivation path: `m/44'/60'/0'/0/0`
 
-1. **If you already have a wallet in Soarchain Connect Mobile app:**
-   - Go to **Settings > Sign Out**
-   - **🚨 CRITICAL**: Before signing out, make sure you have correctly written down your current wallet's 24-word secret phrase on paper (handwritten, legibly) to avoid losing access to your previous wallet
+**Example Ethereum address format:** `0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb`
 
-2. **Create the new wallet:**
-   - Select **"Create Account"** option in the Soarchain Mobile App
-   - **🚨 CRITICAL**: Write down the new wallet's 24-word secret phrase on paper (handwritten, legibly) to avoid losing access to this newly-created wallet
+#### Option 2: Solana Wallet
 
----
-
-### Option 2: Solana CLI Method
-
-1. **Install Solana CLI:**
-   - Follow the installation instructions at: https://solana.com/docs/intro/installation
-   - This tool is required to create a Solana address that complies with 24-word mnemonics and the specific HD path
-
-2. **Generate the new keypair and secure your wallet:**
+**Using Solana CLI:**
+1. Install Solana CLI: https://solana.com/docs/intro/installation
+2. Generate a new keypair:
    ```bash
+   # For 12-word mnemonic (recommended)
+   solana-keygen new --word-count 12 --derivation-path "m/44'/501'/0'/0'" --outfile ~/my-keypair.json
+
+   # For 24-word mnemonic (maximum security)
    solana-keygen new --word-count 24 --derivation-path "m/44'/501'/0'/0'" --outfile ~/my-keypair.json
    ```
-   > **🚨 CRITICAL**: Write down the 24-word phrase provided by the command
-   - Store it somewhere safe and secure
+3. **🚨 CRITICAL**: Write down the mnemonic phrase securely
+4. The wallet uses the derivation path: `m/44'/501'/0'/0'`
+
+**Example Solana address format:** `7xKXtg2CW87d97TXJSDpbD5jBkheTqA83TZRuJosgAsU`
 
 ---
 
@@ -93,7 +95,7 @@ You can create this address using one of the following methods:
 
 ### Required Software
 - **Docker**: 20.10 or later (install from [docs.docker.com](https://docs.docker.com/engine/install/))
-- **Solana Wallet**: New wallet created following the prerequisites above
+- **Ethereum or Solana Wallet**: New wallet created following the prerequisites above (supports 12/15/18/21/24-word mnemonics)
 - **Sudo Access**: Required for installation and running Runsand
 
 ### Installing Docker
@@ -173,7 +175,7 @@ Runsand Universal Installer
 Next steps:
 1. Run 'sudo runsand --help' to see available commands
 2. Run 'sudo runsand' to start the interactive mode
-3. Import your newly created Solana wallet when prompted
+3. Import your Ethereum or Solana wallet when prompted (12/15/18/21/24-word mnemonic supported)
 ```
 
 ### 2. Debian/Ubuntu Package Installation
@@ -274,10 +276,11 @@ The setup wizard will guide you through:
 > **📥 Desktop Image Download Note**: The initial download progress from 0% to ~6% will appear slow as the base layers are larger compared to the remaining ones. After the first few layers complete, the progression speed will significantly increase. This is normal behavior - please be patient and allow sufficient time before considering a retry.
 
 ### Step 2: Wallet Import
-- Import your newly created Solana wallet (see Prerequisites section)
-- 24-word mnemonic phrase required (from the wallet you created in Prerequisites)
+- Import your Ethereum or Solana wallet (see Prerequisites section)
+- Supports 12, 15, 18, 21, or 24-word mnemonic phrases
 - Wallet stored encrypted locally
-- **⚠️ Use only the new wallet created specifically for Runsand**
+- **Ethereum wallets** use BIP44 path: `m/44'/60'/0'/0/0` (compatible with MetaMask, Trust Wallet)
+- **Solana wallets** use path: `m/44'/501'/0'/0'`
 
 ### Step 3: Connection Test
 - Test connection to orchestrator
